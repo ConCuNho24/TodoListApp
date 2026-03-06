@@ -92,7 +92,14 @@ public class Main {
         String password = scanner.nextLine();
 
         User user = authService.signUp(username, password);
-        // TODO Later: Shows a message based on the result
+
+        // Check the result returned by signUp().
+        // If a User object is returned the account was created successfully.
+        if (user != null) {
+            System.out.println("User " + username + " has been created successfully!");
+        } else { // the username already exists and the signup fails.
+            System.out.println("The username is already taken!");
+        }
     }
 
     public static void onExit() {

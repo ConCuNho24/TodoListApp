@@ -5,29 +5,20 @@ import java.util.Scanner;
 
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
-    private static ArrayList<User> users = new ArrayList<>();
+
+    //>>>>>DELTE tmp users list
 
     //>>>>>>>>>Add todoListService
     private static TodoListService todoListService = new TodoListService();
     //<<<<<<<<<<<
 
-    private static IAuthenticationService authService = new IAuthenticationService() {
-        @Override
-        public User signUp(String username, String password) {
-            return null;
-        }
-
-        @Override
-        public User logIn(String username, String password) {
-            return users.get(0);
-        }
-    };
+    //>>>>>>>>>Change Anonymus to normal authService
+    private static IAuthenticationService authService = new AuthenticationService();
+    //>>>>>>>>>
 
     private static boolean isRunning = true;
 
     public static void main(String[] args) {
-        users.add(new User("test", "test"));
-
         while (isRunning) {
             showMenu();
         }
